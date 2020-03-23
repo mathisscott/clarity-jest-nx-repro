@@ -250,6 +250,34 @@
           }
         }
       }
+    },
+    "lib": {
+      "projectType": "library",
+      "root": "libs/lib",
+      "sourceRoot": "libs/lib/src",
+      "prefix": "clr-repro",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/lib/tsconfig.lib.json",
+              "libs/lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/lib/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/lib/jest.config.js",
+            "tsConfig": "libs/lib/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/lib/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

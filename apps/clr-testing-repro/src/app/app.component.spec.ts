@@ -1,12 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { ClarityModule } from '@clr/angular';
+import { ClarityModule, ClrCommonStringsService } from '@clr/angular';
+import { CommonStringsServiceInternal } from '@clr/core/common';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ClarityModule],
-      declarations: [AppComponent]
+      declarations: [AppComponent],
+      providers: [
+        {
+            provide: ClrCommonStringsService,
+            useClass: CommonStringsServiceInternal
+        }
+      ]
     }).compileComponents();
   }));
 
